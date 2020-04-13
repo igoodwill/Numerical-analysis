@@ -30,7 +30,7 @@ static def findSolution(double[] values, double x) {
     }
 
     def tx = new double[n]
-    tx[0] = 1 / Math.sqrt(2)
+    tx[0] = 1
     tx[1] = x
     for (int i = 2; i < n; i++) {
         tx[i] = 2 * x * tx[i - 1] - tx[i - 2]
@@ -52,7 +52,10 @@ static def findSolution(double[] values, double x) {
             a[i] += values[j] * t[i][j]
         }
 
-        a[i] *= 2
+        if (i > 0) {
+            a[i] *= 2
+        }
+
         a[i] /= n
     }
 
